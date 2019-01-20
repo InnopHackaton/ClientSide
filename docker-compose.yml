@@ -3,4 +3,14 @@ version: '2'
 services:
  messager:
    build: .
+   networks:
+     vpcbr:
+        ipv4_address: 172.0.0.2
+networks:
+  vpcbr:
+    driver: bridge
+    ipam:
+     config:
+       - subnet: 172.0.0.0/16
+         gateway: 172.0.0.1
    
