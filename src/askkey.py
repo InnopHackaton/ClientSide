@@ -2,8 +2,8 @@
 import select
 import socket
 import sys
-import threading
 import gnupg
+import configparser
 
 def recv_message(socket):
     read_socket, write_socket, error_socket = select.select([socket], [], [])
@@ -17,25 +17,18 @@ def recv_message(socket):
         except Exception as e:
             print("Can't received ", e)
 
-
-def send_message(socket):
-    message = sys.stdin.readline()
-    try:
-        socket.send(message.encode("utf-8"))
-    except:
-        sys.stdout.write("\rError message")
-        sys.exit(1)
-
-
 if __name__ == "__main__":
+    config = configparser.ConfigParser()
+    config.read('configs/config.ini')
+    HOST, PORT = config['DEFAULT']['SERVER_IP'], config['DEFAULT']['KEY_PORT']
+
     socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     socket.settimeout(2)
-
+    
     try:
-        socket.connect(("80.211.104.94", 1338))
+        socket.connect((HOST, int(PORT)))
     except Exception as e:
         print("Connection failed: ", e)
         sys.exit(1)
 
-    send_message(socket)
     recv_message(socket)

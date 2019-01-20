@@ -4,6 +4,7 @@ import socket
 import sys
 import threading
 from coder import Encoder, Decoder
+import configparser
 
 def promt():
     sys.stdout.write("<YOU>:")
@@ -33,12 +34,16 @@ def send_message(socket):
 
 
 if __name__ == "__main__":
+    config = configparser.ConfigParser()
+    config.read('configs/config.ini')
+    HOST, PORT = config['DEFAULT']['SERVER_IP'], config['DEFAULT']['MES_PORT']
+
     socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     socket.settimeout(2)
     encoder, decoder = Encoder(), Decoder()
 
     try:
-        socket.connect(("80.211.104.94", 1337))
+        socket.connect((HOST, int(PORT)))
     except Exception as e:
         print("Connection failed: ", e)
         sys.exit(1)
