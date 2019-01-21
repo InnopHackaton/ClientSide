@@ -2,6 +2,7 @@
 [![](https://img.shields.io/badge/python-3.6+-blue.svg)](https://www.python.org/download/releases/3.6.0/)
 ![](https://img.shields.io/docker/automated/vladius25/serverside.svg?colorB=brightgreen)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/InnopHackaton/ClientSide.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/InnopHackaton/ClientSide/context:python)
 
 ### Зимний хакатон Иннополиса
 # Схема
