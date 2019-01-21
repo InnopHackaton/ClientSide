@@ -1,7 +1,7 @@
 FROM ubuntu
 
 RUN apt-get -yqq update
-RUN apt-get -yqq install python3 python3-gnupg
+RUN apt-get -yqq install python3 python3-gnupg python3-crypto
 RUN useradd hackathon
 
 COPY src/ /home/hackathon

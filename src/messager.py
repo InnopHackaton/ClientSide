@@ -30,7 +30,7 @@ config = configparser.ConfigParser()
 config.read('configs/config.ini')
 
 # ----Now comes the sockets part----
-HOST, PORT = config['DEFAULT']['SERVER_IP'], config['DEFAULT']['KEY_PORT']
+HOST, PORT = config['DEFAULT']['SERVER_IP'], int(config['DEFAULT']['MES_PORT'])
 
 BUFSIZ = 6144
 ADDR = (HOST, PORT)
